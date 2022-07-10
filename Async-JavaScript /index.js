@@ -1,9 +1,8 @@
 const getTodos = (resource, callback) => {
 
   const request = new XMLHttpRequest()
-
   request.addEventListener('readystatechange', () => {
-    // console.log(request,  request.readyState);
+    // console.log(request, request.readyState);
     if (request.readyState === 4 && request.status === 200) {
       const data = JSON.parse(request.responseText)
       callback(undefined, data)
@@ -16,13 +15,19 @@ const getTodos = (resource, callback) => {
   request.send()
 }
 
-getTodos('todos/todos.json',(err, data) => {
-  console.log('callback fired');
-  console.log(data);
-  getTodos('todos/todos1.json', (err, data) => {
-    console.log(data);
-    getTodos('todos/todos1.json', (err, data) => {
-      console.log(data);
-    })
-  })
-})
+// getTodos('todos/todos.json', (err, data) => {
+//   console.log('callback fired');
+//   console.log(data);
+//   getTodos('todos/todos1.json', (err, data) => {
+//     console.log(data);
+//     getTodos('todos/todos1.json', (err, data) => {
+//       console.log(data);
+//     })
+//   })
+// })
+
+//promise example 
+
+const getSomething = () => {
+  
+}
