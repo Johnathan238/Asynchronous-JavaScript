@@ -27,7 +27,20 @@ const getTodos = (resource, callback) => {
 // })
 
 //promise example 
-
 const getSomething = () => {
-  
+
+  return new Promise((resolve, reject) => {
+    // fetch something
+    // resolve('resolve data')
+    reject('error')
+  })
 }
+
+// 1. Getting reject with callback
+// getSomething().then((data) => {
+//   console.log(data);
+// }, (err) => {
+//   console.log(err);
+// })
+
+// 2. Getting reject with .catch()
