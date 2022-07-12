@@ -1,34 +1,34 @@
-const getTodos = (resource) => {
+// const getTodos = (resource) => {
 
-  return new Promise((resolve, reject) => {
+//   return new Promise((resolve, reject) => {
 
-    const request = new XMLHttpRequest()
-    request.addEventListener('readystatechange', () => {
+//     const request = new XMLHttpRequest()
+//     request.addEventListener('readystatechange', () => {
       
-      if (request.readyState === 4 && request.status === 200) {
-        const data = JSON.parse(request.responseText)
-        resolve(data)
-      } else if (request.readyState === 4) {
-        reject('could not fetch data', undefined)
-      }
-    })
+//       if (request.readyState === 4 && request.status === 200) {
+//         const data = JSON.parse(request.responseText)
+//         resolve(data)
+//       } else if (request.readyState === 4) {
+//         reject('could not fetch data', undefined)
+//       }
+//     })
     
-    request.open('GET', resource)
-    request.send()
-  })
-}
+//     request.open('GET', resource)
+//     request.send()
+//   })
+// }
 
-getTodos('todos/todos.json').then((data) => {
-  console.log('promise 1 resolved', data);
-  return getTodos('todos/todos1.json')
-}).then(data => {
-  console.log('promise 2 resolved', data);
-  return getTodos('todos/todos2.json')
-}).then(data => {
-  console.log('promise 3 resolved', data);
-}).catch((err) => {
-  console.log('promise resolved', err);
-})
+// getTodos('todos/todos.json').then((data) => {
+//   console.log('promise 1 resolved', data);
+//   return getTodos('todos/todos1.json')
+// }).then(data => {
+//   console.log('promise 2 resolved', data);
+//   return getTodos('todos/todos2.json')
+// }).then(data => {
+//   console.log('promise 3 resolved', data);
+// }).catch((err) => {
+//   console.log('promise resolved', err);
+// })
 
 
 // getTodos('todos/todos.json', (err, data) => {
@@ -65,3 +65,14 @@ getTodos('todos/todos.json').then((data) => {
 // }).catch(err => {
 //   console.log(err);
 // })
+
+
+// Fetch API
+fetch('todos/todos.json').then((response) => {
+  console.log('response', response);
+  return response.json()
+}).then(data => {
+  console.log(data);
+}).catch((err) => {
+  console.log('reject', err);
+})
