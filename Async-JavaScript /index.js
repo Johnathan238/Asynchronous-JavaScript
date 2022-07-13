@@ -68,11 +68,29 @@
 
 
 // Fetch API
-fetch('todos/todos.json').then((response) => {
-  console.log('response', response);
-  return response.json()
-}).then(data => {
-  console.log(data);
-}).catch((err) => {
-  console.log('reject', err);
-})
+// fetch('todos/todos.json').then((response) => {
+//   console.log('response', response);
+//   return response.json()
+// }).then(data => {
+//   console.log(data);
+// }).catch((err) => {
+//   console.log('reject', err);
+// })
+
+// async & await 
+const getTodos = async () => {
+  const response = await fetch('todos/todos2.json')
+
+  if (response.status !== 200) {
+    throw new console.error('cannot fetch the data')
+  }
+
+  const data = await response.json()
+
+  return data
+}
+
+getTodos()
+  .then(data => console.log('resolved:', data))
+  .catch(err => console.log('rejectedL', err.message))
+
