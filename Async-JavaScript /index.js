@@ -79,10 +79,10 @@
 
 // async & await 
 const getTodos = async () => {
-  const response = await fetch('todos/todos2.json')
+  const response = await fetch('todos/todos12.json')
 
   if (response.status !== 200) {
-    throw new console.error('cannot fetch the data')
+    throw new Error('cannot fetch the data')
   }
 
   const data = await response.json()
@@ -92,5 +92,5 @@ const getTodos = async () => {
 
 getTodos()
   .then(data => console.log('resolved:', data))
-  .catch(err => console.log('rejectedL', err.message))
+  .catch(err => console.log('rejected', err.message))
 
